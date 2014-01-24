@@ -1,0 +1,111 @@
+<head>
+    <title>Agile Invaders Score Board</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/scoreboard.css" rel="stylesheet" media="screen">
+    
+</head>
+<body>
+    <nav class="navbar-wrapper navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="menu">MENU</span>
+                </button>
+                <a class="navbar-brand" href="about.html" id="brand"><img src="images/logo.png"/></a>
+                
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="about.html"><span class="glyphicon glyphicon-question-sign"></span> About the game</a></li>
+                    <li><a href="scoreboard.html"><span class="glyphicon glyphicon-star"></span> Score Board</a></li>
+                    <li><a href="citerus.html"><span class="glyphicon glyphicon-heart"></span> Citerus AB</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {{> main}}
+    
+    <!-- <table class="table highscore">
+<tr><td></td><td class="pink">RANK</td> <td class="pink">SCORE</td> <td class="pink">NAME</td><td></td></tr>
+<tr class="green"><td><span class="glyphicon glyphicon-star"></span></td> <td >1st</td> <td>3000 p</td> <td>Alice</td> <td><span class="glyphicon glyphicon-star"></span></td></tr>
+<tr  class="yellow"><td><span class="glyphicon glyphicon-star"></span></td><td>2nd</td> <td>2999 p</td> <td>Bob</td> <td><span class="glyphicon glyphicon-star"></span></td></tr>
+<tr class="yellow"><td><span class="glyphicon glyphicon-star"></span></td><td>3rd</td> <td>2998 p</td> <td>Eve</td> <td><span class="glyphicon glyphicon-star"></span></td></tr>
+<tr  class="orange"><td><span class="glyphicon glyphicon-star"></span></td><td>4th</td> <td>2997 p</td> <td>Dave</td> <td><span class="glyphicon glyphicon-star"></span></td></tr>
+<tr class="red"><td><span class="glyphicon glyphicon-star"></span></td><td>5th</td> <td>2996 p</td> <td>Mimi</td> <td><span class="glyphicon glyphicon-star"></span></td></tr>
+</table> -->
+    
+    <footer>
+        <div class="container">
+            <p>&copy; Citerus AB 2014</p>
+        </div>
+    </footer>
+</body>
+
+<template name="main">
+    {{#if showLogin}}
+        {{loginButtons}}
+        {{#if isCiterus}}
+            {{> admin}}
+    {{/if}}
+    {{else}}
+
+        {{> highscore}}
+    {{/if}}
+</template>
+
+<template name="highscores">
+    <table class="table highscore">
+        <td></td><td class="pink">RANK</td> <td class="pink">SCORE</td> <td class="pink">NAME</td><td></td></tr>
+        {{#each scores}}
+        <tr><td><span class="glyphicon glyphicon-star"></span></td> 
+            <td> st</td> 
+            <td>{{score}}</td> 
+            <td>{{name}}</td> <!--{{email}}-->
+            <td><span class="glyphicon glyphicon-star"></span></td>
+        </tr>
+        {{/each}}
+    </table>
+</template>
+
+
+<template name="highscore">
+    <div class="container" id="first">
+        
+        <div class="container" id="content">
+            
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="pink airy"><span class="glyphicon glyphicon-star"></span> Score Board</h1>
+                    <div class="container">
+                        {{> highscores}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template name="admin">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 ">
+            <form role="form" class="score-form well">
+                <p>Nytt highscoreresultat: </p>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="new-score-name" placeholder="Namn">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="new-score-value" placeholder="Po&auml;ng">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="new-score-email" placeholder="Email">
+                </div>
+                <input type="button" id="new-score-save" class="btn btn-default" value="Spara"/>
+            </form>
+        </div>
+    </div>
+    {{> highscore}}
+</template>
