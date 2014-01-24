@@ -6,6 +6,7 @@
 standard-app-packages
 preserve-inputs
 accounts-ui
+accounts-base
 accounts-google
 jquery
 bootstrap-3
