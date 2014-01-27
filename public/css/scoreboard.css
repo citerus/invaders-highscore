@@ -132,3 +132,7 @@ iframe {
     font-size: x-large;
     font-weight: bolder;
 }
+
+.date {
+    font-size: 10px;
+}

@@ -1,6 +1,10 @@
+
 Template.admin.scores = function () {
-	return Highscores.find();
-}
+  return Highscores.find({}, {sort: {score: -1}}).map(function(doc, index, cursor) {
+    var i = _.extend(doc, {index: getGetOrdinal(index+1)});
+    return i;
+  });
+};
 
 var validStr = function(str) {
 	return str.length > 0;
@@ -30,6 +34,8 @@ Template.admin.events({
 	}
 });
 
-Template.score.date = function() {
-	return new Date(this.timestamp);
+Template.highscores.date = function() {
+    var d = new Date();
+    d.setTime(this.timestamp - (d.getTimezoneOffset() * 60 * 1000));
+	return d.toUTCString();
 }

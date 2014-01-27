@@ -50,19 +50,19 @@
         {{loginButtons}}
         {{#if isCiterus}}
             {{> admin}}
+            {{> highscore }}
     {{/if}}
     {{else}}
-
         {{> highscore}}
     {{/if}}
 </template>
 
-<template name="highscores">
+<template name="highscores-y4masd">
     <table class="table highscore">
         <td></td><td class="pink">RANK</td> <td class="pink">SCORE</td> <td class="pink">NAME</td><td></td></tr>
         {{#each scores}}
         <tr><td><span class="glyphicon glyphicon-star"></span></td> 
-            <td> st</td> 
+            <td> {{index}} </td> 
             <td>{{score}}</td> 
             <td>{{name}}</td> <!--{{email}}-->
             <td><span class="glyphicon glyphicon-star"></span></td>
@@ -81,12 +81,42 @@
                 <div class="col-lg-12">
                     <h1 class="pink airy"><span class="glyphicon glyphicon-star"></span> Score Board</h1>
                     <div class="container">
-                        {{> highscores}}
+                            {{> highscores}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</template>
+
+<template name="highscores">
+    <table class="table highscore">
+    <tr>
+        <td></td>
+        <td class="pink">RANK</td> 
+        <td class="pink">SCORE</td> 
+        <td class="pink">NAME</td>
+        {{#if showAll}}
+            <td>EMAIL</td>
+            <td>RECORDED BY</td>
+		    <td>DATE</td>
+        {{/if}}
+        <td></td>
+    </tr>
+        {{#each scores}}
+        <tr><td><span class="glyphicon glyphicon-star"></span></td> 
+            <td> {{index}} </td> 
+            <td>{{score}}</td> 
+            <td>{{name}}</td>
+            {{#if showAll}}
+            <td>{{email}}</td>
+            <td>{{recordedBy}}</td>
+		    <td class="date">{{date}}</td>
+            {{/if}}
+            <td><span class="glyphicon glyphicon-star"></span></td>
+        </tr>
+        {{/each}}
+    </table>
 </template>
 
 <template name="admin">
@@ -107,5 +137,4 @@
             </form>
         </div>
     </div>
-    {{> highscore}}
 </template>

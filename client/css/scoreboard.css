@@ -144,14 +144,29 @@ tr:nth-child(2) {
     color: #47ff06;
 }
 tr:nth-child(3) {
-    color: #ffff00;
+    color: #47ff06;
 }
 tr:nth-child(4) {
     color: #ffff00;
 }
 tr:nth-child(5) {
-     color: #ffc405;
+    color: #ffff00;
 }
 tr:nth-child(6) {
+    color: #ffff00;
+}
+tr:nth-child(7) {
+    color: #ffc405;
+}
+tr:nth-child(8) {
+     color: #ffc405;
+}
+tr:nth-child(9) {
+    color: #ffc405;
+}
+tr:nth-child(10) {
+     color: #ff2035;
+}
+tr:nth-child(1n+10) {
      color: #ff2035;
 }
