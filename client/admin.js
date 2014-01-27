@@ -27,6 +27,9 @@ Template.admin.events({
 				recordedBy: Meteor.user().services.google.email,
 				timestamp: (new Date()).getTime()
 			});
+            $('#new-score-name').val("");
+            $('#new-score-value').val("");
+            $('#new-score-email').val("");
 		} else {
 			alert('Alla f&auml;lt m&aring;ste vara korrekt ifyllda.');
 		}
