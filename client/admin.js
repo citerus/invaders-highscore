@@ -33,7 +33,6 @@ Template.admin.events({
 		} else {
 			alert('Alla f&auml;lt m&aring;ste vara korrekt ifyllda.');
 		}
-
 	}
 });
 
