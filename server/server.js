@@ -28,5 +28,9 @@ Highscores.allow({
   },
   remove: function (userId) {
     return (userId && isAuthorized(Meteor.user()));
+  },
+  update: function (userId) {
+      return (userId && isAuthorized(Meteor.user()));
   }
+
 });

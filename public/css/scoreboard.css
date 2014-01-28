@@ -110,12 +110,6 @@ footer a {
     padding-bottom: 30px;
 }
 
-iframe {
-    background-color:  #47ff06;
-}
-
-
-
 .blink {
     text-decoration: blink;
 }
@@ -197,4 +191,17 @@ tr:nth-child(1n+10) {
 }
 .score-form {
     margin-top: 100px;
+}
+
+a {
+    color: #ff20d0;
+    font-weight: bolder;
+}
+
+a:hover{
+    color: #f979ff;
+}
+
+.person {
+    font-weight: normal;
 }

@@ -20,13 +20,26 @@ Template.admin.events({
 		var score = $('#new-score-value').val();
 		var email = $('#new-score-email').val();
 		if (validStr(name) && validNum(score) && validStr(email)) {
-			Highscores.insert({
-				name: name,
-				score: parseFloat(score),
-				email: email,
-				recordedBy: Meteor.user().services.google.email,
-				timestamp: (new Date()).getTime()
-			});
+            var highscore = Highscores.findOne({email: email});
+
+            if (highscore) {
+                Highscores.update(
+                    { _id : highscore._id },
+                    { $set: {score: parseFloat(score),
+                        name: name,
+                        email: email,
+                        recordedBy: Meteor.user().services.google.email,
+                        timestamp: (new Date()).getTime()
+                    }});
+            } else {
+                Highscores.insert({
+                    name: name,
+                    score: parseFloat(score),
+                    email: email,
+                    recordedBy: Meteor.user().services.google.email,
+                    timestamp: (new Date()).getTime()
+                });
+            }
             $('#new-score-name').val("");
             $('#new-score-value').val("");
             $('#new-score-email').val("");
@@ -34,6 +47,18 @@ Template.admin.events({
 			alert('Alla f&auml;lt m&aring;ste vara korrekt ifyllda.');
 		}
 	}
+});
+
+Template.highscores.events({
+       'dblclick' : function () {
+           if (isAuthorized && window.location.search === '?login') {
+               var returned = confirm("Är du säker på att du vill ta bort poängen för: " + this.email + " ?");
+               if (returned) {
+                   Highscores.remove( {_id : this._id});
+               }
+           }
+
+       }
 });
 
 Template.highscores.date = function() {
