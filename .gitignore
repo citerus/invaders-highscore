@@ -1,0 +1,10 @@
+jsdoc/
+*.min.js
+*.all.js
+.DS_Store
+.idea
+*.iml
+node_modules/
+*.pyc
+*.bak
+*~
