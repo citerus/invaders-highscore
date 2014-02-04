@@ -17,6 +17,7 @@ Meteor.publish('highscores', function () {
 	} else {
 		return Highscores.find({}, {
 			fields: {name: 1, score: 1},
+      sort: {score: -1},
 			limit: 10
 		});
 	}	
